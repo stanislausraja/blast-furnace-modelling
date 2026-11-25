@@ -1,0 +1,17 @@
+{
+  "version": "0.1.0",
+  "files": [
+    "__init__.py",
+    "registry.py",
+    "core/__init__.py",
+    "core/constants.py",
+    "core/thermo.py",
+    "core/schema.py",
+    "sections/__init__.py",
+    "sections/geometry.py",
+    "sections/mass_balance.py",
+    "sections/energy_balance.py",
+    "sections/temperature.py",
+    "sections/composition.py"
+  ]
+}

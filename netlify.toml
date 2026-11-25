@@ -1,0 +1,13 @@
+[build]
+  publish = "public"
+  command = ""
+
+[[headers]]
+  for = "/bf_model/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/*.py"
+  [headers.values]
+    Content-Type = "text/plain; charset=utf-8"

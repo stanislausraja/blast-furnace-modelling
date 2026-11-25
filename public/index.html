@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blast Furnace Simulator — Numerical & Visual Model</title>
+  <meta name="description" content="Interactive blast furnace model: mass balance, energy balance, temperature distribution and chemical composition, computed in Python in your browser.">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <img src="assets/img/favicon.svg" alt="" width="34" height="34">
+      <div>
+        <h1>Blast Furnace Simulator</h1>
+        <p>Numerical &amp; visual model · Python engine running in your browser</p>
+      </div>
+    </div>
+    <div class="actions">
+      <span id="status" class="status loading"><span class="dot"></span><span class="txt">Starting…</span></span>
+      <label class="toggle" title="Recalculate automatically whenever an input changes">
+        <input type="checkbox" id="live" checked><span class="track"></span> Live
+      </label>
+      <button id="btn-run" class="btn primary" disabled>▶ Run model</button>
+      <div class="menu">
+        <button class="btn" id="btn-menu">⋯</button>
+        <div class="menu-list" id="menu-list">
+          <button data-act="reset">Reset all inputs to defaults</button>
+          <button data-act="export-inputs">Export inputs (JSON)</button>
+          <button data-act="import-inputs">Import inputs (JSON)</button>
+          <button data-act="export-results">Export results (JSON)</button>
+          <button data-act="print">Print / save as PDF</button>
+        </div>
+      </div>
+      <button class="btn only-mobile" id="btn-inputs">Inputs</button>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-head">
+        <h2>Inputs</h2>
+        <input type="search" id="search" placeholder="Search parameters…" autocomplete="off">
+        <div class="changed-info" id="changed-info"></div>
+      </div>
+      <div id="inputs" class="inputs"><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div></div>
+    </aside>
+
+    <main class="main">
+      <nav class="tabs" id="tabs"></nav>
+      <section id="view" class="view">
+        <div class="loading-screen" id="loading-screen">
+          <div class="furnace-loader">
+            <div class="flame"></div>
+          </div>
+          <h2>Firing up the furnace…</h2>
+          <p id="loading-text">Downloading Python runtime (≈ 6 MB, first visit only)</p>
+        </div>
+      </section>
+      <footer class="footer">
+        Steady-state engineering model for teaching &amp; scoping studies — results are estimates, not plant guarantees.
+      </footer>
+    </main>
+  </div>
+
+  <input type="file" id="file-input" accept="application/json" hidden>
+  <script type="module" src="assets/js/app.js"></script>
+</body>
+</html>
